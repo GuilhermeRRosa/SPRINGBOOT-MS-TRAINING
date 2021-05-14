@@ -15,10 +15,16 @@ public class ClienteService {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
-	
-	public List<Cliente> buscarTodos(){
+
+	public List<Cliente> buscarTodos() {
 		Optional<List<Cliente>> clientes = Optional.ofNullable(clienteRepository.findAll());
 		return clientes.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
-	
+
+	public Cliente buscar(Integer id) {
+		Optional<Cliente> obj = clienteRepository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado: " + id + ", Tipo: " + Cliente.class.getName()));
+	}
+
 }
