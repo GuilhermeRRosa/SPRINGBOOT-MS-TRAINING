@@ -19,7 +19,7 @@ public class ClienteResource {
 	@Autowired
 	ClienteService clienteService;
 	
-	@RequestMapping(value = "/todos")
+	@RequestMapping(value = "/all")
 	public ResponseEntity<?> buscarClientes(){
 		List<Cliente> clientes = clienteService.buscarTodos();
 		return ResponseEntity.ok().body(clientes);
